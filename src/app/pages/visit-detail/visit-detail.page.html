@@ -1,0 +1,76 @@
+
+<ion-content>
+  <div class="header-image-section">
+    <ion-header class="ion-no-border" [style.backgroundColor]="state == 1 ? '' : 'rgba(0,0,0,0.3)'">
+      <ion-toolbar>
+        <ion-button (click)="back()" mode="ios" slot="start" >
+          <ion-icon slot="start" color="light" name="arrow-back"></ion-icon>
+
+       </ion-button>
+        <!-- <ion-title color="light"><ion-icon slot="start" name="pin"></ion-icon>{{locale.subLocality}},{{locale.thoroughfare}},{{locale.locality}},{{locale.countryName}} </ion-title> -->
+
+      </ion-toolbar>
+    </ion-header>
+    <img *ngIf="foo.image_path" class="bann" src="https://sibadmin.wigopay.com{{foo.image_path}}" />
+    <img *ngIf="!foo.image_path" class="bann" src="../../assets/product/OIP.jfif"/>
+  </div>
+
+<p></p>
+<!-- <span>{{spot}}</span> -->
+  <div class="order_active ion-padding-top" (click)="check(order1)">
+    <ion-item lines="none">
+      <!-- <ion-avatar slot="start">
+        <img src="../../assets/images/delivery-truck.png" />
+      </ion-avatar> -->
+      <ion-label>
+        <h2>FARM:{{foo.farm_id}}</h2>
+        <!-- <h3>ORDER:{{order_id_1}}</h3> -->
+        <p><small>{{foo.created_at | date:'short':'GMT'}}</small></p>
+
+      </ion-label>
+      <div id="end">
+
+        <p><small>BY:{{foo.user_id}}</small></p>
+      </div>
+    </ion-item>
+  </div>
+  <div class="order_active ion-padding-top" (click)="check(order1)">
+    <ion-item lines="none">
+      <!-- <ion-avatar slot="start">
+        <img src="../../assets/images/delivery-truck.png" />
+      </ion-avatar> -->
+      <ion-label>
+        <h2 >Farm Issue</h2>
+
+        <p class="ion-text-wrap">{{foo.farm_issue_id}}</p>
+      </ion-label>
+
+    </ion-item>
+  </div>
+  <div class="order_active ion-padding-top" (click)="check(order1)">
+    <ion-item lines="none">
+      <!-- <ion-avatar slot="start">
+        <img src="../../assets/images/delivery-truck.png" />
+      </ion-avatar> -->
+      <ion-label>
+        <h2 >Observation</h2>
+
+        <p class="ion-text-wrap">{{foo.reason}}</p>
+      </ion-label>
+
+    </ion-item>
+  </div>
+  <div class="order_active ion-padding-top" (click)="check(order1)">
+    <ion-item lines="none">
+      <!-- <ion-avatar slot="start">
+        <img src="../../assets/images/delivery-truck.png" />
+      </ion-avatar> -->
+      <ion-label>
+        <h2 >Recommendation</h2>
+
+        <p class="ion-text-wrap">{{foo.recommendation}}</p>
+      </ion-label>
+
+    </ion-item>
+  </div>
+</ion-content>

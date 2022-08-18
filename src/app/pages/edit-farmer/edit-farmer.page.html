@@ -1,0 +1,73 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title mode="md">{{foo.first_name}}{{foo.last_name}}</ion-title>
+    <!-- <ion-buttons slot="start">
+        <ion-back-button (click)="back()"></ion-back-button>
+      </ion-buttons> -->
+    <ion-button (click)="back()" mode="ios" slot="start">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="ion-padding first">
+
+      <hr />
+      <ion-input
+        [(ngModel)]="foo.first_name"
+        placeholder="Firstname"
+
+      ></ion-input>
+      <hr />
+      <ion-input
+      [(ngModel)]="foo.middle_name"
+      placeholder="Middlename"
+    ></ion-input>
+    <hr>
+      <ion-input
+       [(ngModel)]="foo.last_name"
+        placeholder="Surname"
+      ></ion-input>
+
+      <hr />
+      <ion-label></ion-label>
+      <ion-select mode="ios" [(ngModel)]="foo.gender" placeholder="Gender">
+        <ion-select-option value="Male">Male</ion-select-option>
+        <ion-select-option value="Female">Female</ion-select-option>
+      </ion-select>
+      <hr>
+      <ion-label position="floating"></ion-label>
+
+      <hr>
+      <ion-input
+      type="tel"
+      [(ngModel)]="foo.phone_number"
+      placeholder="phone"
+    ></ion-input>
+    <hr>
+      <ion-input [(ngModel)]="foo.national_id" placeholder="Id Number"></ion-input>
+      <hr />
+
+
+
+      <!-- <ion-select mode="ios" formControlName="vchain" multiple="true"  placeholder="Value Chain">
+        <ion-select-option value="maize">Maize</ion-select-option>
+        <ion-select-option value="beans">Beans</ion-select-option>
+        <ion-select-option value="green grams">Green grams</ion-select-option>
+        <ion-select-option value="sorghum">Sorghum</ion-select-option>
+        <ion-select-option value="cow peas">Cow Peas</ion-select-option>
+        <ion-select-option value="chic peas">Chic Peas</ion-select-option>
+      </ion-select> -->
+      <hr>
+      <ion-button
+       (click)="updateFrmer()"
+        mode="md"
+        expand="full"
+        color="primary"
+        >Update</ion-button
+      >
+    </div>
+
+</ion-content>

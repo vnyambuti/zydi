@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title mode="md">Enroll Farmer</ion-title>
+    <!-- <ion-buttons slot="start">
+        <ion-back-button (click)="back()"></ion-back-button>
+      </ion-buttons> -->
+    <ion-button (click)="back()" mode="ios" slot="start">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form
+    action=""
+    [formGroup]="farmerform"
+    (ngSubmit)="tryReg(farmerform.value)"
+  >
+    <div class="ion-padding first">
+     
+      <hr />
+      <ion-input
+        formControlName="fname"
+        placeholder="Firstname"
+      ></ion-input>
+      <hr />
+      <ion-input
+      formControlName="mname"
+      placeholder="Middlename"
+    ></ion-input>
+    <hr>
+      <ion-input
+        formControlName="sname"
+        placeholder="Surname"
+      ></ion-input>
+
+      <hr />
+      <ion-label></ion-label>
+      <ion-select mode="ios" formControlName="gender" placeholder="Gender">
+        <ion-select-option value="Male">Male</ion-select-option>
+        <ion-select-option value="Female">Female</ion-select-option>
+      </ion-select>
+      <hr>
+      <ion-label position="floating"></ion-label>
+      <ion-datetime
+        displayFormat="MM/DD/YYYY"
+        formControlName="yob"
+        placeholder="Year Of Birth"
+      ></ion-datetime>
+      <hr>
+      <ion-input
+      type="tel"
+      formControlName="phone"
+      placeholder="phone"
+    ></ion-input>
+    <hr>
+      <ion-input formControlName="idno" placeholder="Id Number"></ion-input>
+      <hr />
+
+ 
+
+      <ion-select mode="ios" formControlName="vchain" multiple="true"  placeholder="Value Chain">
+        <ion-select-option value="maize">Maize</ion-select-option>
+        <ion-select-option value="beans">Beans</ion-select-option>
+        <ion-select-option value="green grams">Green grams</ion-select-option>
+        <ion-select-option value="sorghum">Sorghum</ion-select-option>
+        <ion-select-option value="cow peas">Cow Peas</ion-select-option>
+        <ion-select-option value="chic peas">Chic Peas</ion-select-option>
+      </ion-select>
+      <hr>
+      <ion-button
+        [disabled]="!farmerform.valid"
+        mode="md"
+        expand="full"
+        color="primary"
+        type="submit"
+        >Enroll</ion-button
+      >
+    </div>
+  </form>
+</ion-content>

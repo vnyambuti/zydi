@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="ion-no-margin" (click)="back()" mode="ios" slot="start" >
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+
+   </ion-button>
+    <!-- <ion-title >Account</ion-title> -->
+    <form (ngSubmit)="findAccount(searchform.value)" [formGroup]="searchform" class="searchform">
+      <ion-searchbar formControlName="term" mode="ios" [debounce]="250" ></ion-searchbar>
+      </form>
+      <ion-button class="ion-no-margin" (click)="goToAddDealer()" mode="ios" slot="end" >
+        <ion-icon slot="start" name="add"></ion-icon>
+
+     </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="img2" *ngIf="!reversed ">
+    <img src="../../../assets/no-data-icon-10.jpg">
+  </div>
+  <div *ngFor="let item of reversed" class="order_active ion-padding-top" (click)="check(item)">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <img src="../../../assets/images/avatar.jfif" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{item.first_name}} {{item.last_name}}</h2>
+        <h3>{{item.national_id}}</h3>
+        <p>{{item.phone_number}}</p>
+      </ion-label>
+      <div id="end">
+        <ion-badge *ngFor="let role of item.roles" color="primary" slot="end" mode="ios"
+          >{{role.name}}</ion-badge
+        >
+        <p><small>{{item.created_at | date:'short':'GMT'}}</small></p>
+      </div>
+    </ion-item>
+  </div>
+</ion-content>

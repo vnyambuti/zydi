@@ -1,0 +1,158 @@
+
+<ion-header class="ion-no-border" color="primary">
+  <!-- <ion-toolbar>
+    <ion-title>Header</ion-title>
+  </ion-toolbar> -->
+  <div id="section1">
+    <div id="sub-sec1">
+      <p *ngIf="balance">ksh {{balance}}</p>
+      <p *ngIf="!balance">ksh 0</p>
+      <div>
+        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-avatar>
+          <img src="../../assets/images/avatar.jfif" />
+        </ion-avatar>
+      </div>
+    </div>
+    <p id="subtext1">Available Balance</p>
+    <div id="subsec2">
+      <span (click)="goToFarmers()">
+        <ion-badge color="light" mode="ios"><small>0</small></ion-badge>
+        <img src="../../assets/images/farmer.png" alt="">
+        <p>Farmers</p>
+      </span>
+      <span (click)="goToDealer()">
+        <ion-badge color="light" mode="ios"><small>{{countdealers}}</small></ion-badge>
+      <img src="../../assets/images/silo.png" alt="">
+        <p>Dealer</p>
+      </span>
+      <span (click)="goToCatalogue()">
+        <ion-badge color="light" mode="ios"><small>0</small></ion-badge>
+      <img src="../../assets/images/bill.png" alt="">
+        <p>Utilities</p>
+      </span>
+      <span (click)="goToSearch()">
+        <img src="../../assets/images/search.png" alt="">
+        <p>Search</p>
+      </span>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+
+  <!-- <ion-card id="main1"> -->
+    <ion-list-header id="cheader">
+      <ion-label> <h3>Recent Transaction</h3> </ion-label>
+      <ion-button>See All</ion-button>
+    </ion-list-header>
+
+    <p id="bages">
+      <ion-badge color="primary" mode="ios"><small>All</small></ion-badge>
+      <ion-badge color="primary" mode="ios"><small>Catalogue</small></ion-badge>
+      <ion-badge color="primary" mode="ios"><small>Dealers</small></ion-badge>
+      <ion-badge color="primary" mode="ios"><small>Farmers</small></ion-badge>
+      <!-- <ion-badge color="primary" mode="ios">Orders <span color="light">42</span> </ion-badge> -->
+      <!-- <ion-badge color="primary" mode="ios">Visits</ion-badge> -->
+    </p>
+    <div class="ion-padding-start ion-margin-top ion-padding-end">
+      <ion-scroll>
+        <ion-list-header>
+          <ion-label> <h3>Recent Orders</h3> </ion-label>
+          <ion-button (click)="goToOrders()">See All</ion-button>
+        </ion-list-header>
+        <div class="order_active ion-padding-top" (click)="check(order1)">
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img src="../../assets/images/delivery-truck.png" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{order_ref_1}}</h2>
+              <h3>ORDER:#{{order_id_1}}</h3>
+              <p>{{order_created_1 | date:'short':'GMT'}}</p>
+            </ion-label>
+            <div id="end">
+              <ion-badge *ngIf="order_status_2 == 'initiated'" color="warning" slot="end" mode="ios"
+              ><small>{{order_status_1}}</small></ion-badge>
+              <ion-badge *ngIf="order_status_2 === 'ordered'" color="primary" slot="end" mode="ios"
+              ><small>{{order_status_1}}</small></ion-badge>
+              <ion-badge *ngIf="order_status_2 === 'cancelled'" color="danger" slot="end" mode="ios"
+              ><small>{{order_status_1}}</small></ion-badge>
+              <p><small>#{{order_vba_1}}</small></p>
+            </div>
+          </ion-item>
+        </div>
+        <div class="order_active ion-padding-top" (click)="check(order2)">
+          <ion-item lines="none">
+            <ion-avatar slot="start">
+              <img src="../../assets/images/delivery-truck.png" />
+            </ion-avatar>
+            <ion-label>
+              <h2>{{order_ref_2}}</h2>
+              <h3>ORDER:#{{order_id_2}}</h3>
+              <p>{{order_created_2 | date:'short':'GMT'}}</p>
+            </ion-label>
+            <div id="end">
+              <ion-badge *ngIf="order_status_2 == 'initiated'" color="warning" slot="end" mode="ios"
+                ><small>{{order_status_2}}</small></ion-badge>
+                <ion-badge *ngIf="order_status_2 === 'complete'" color="primary" slot="end" mode="ios"
+                ><small>{{order_status_2}}</small></ion-badge>
+                <ion-badge *ngIf="order_status_2 === 'cancelled'" color="danger" slot="end" mode="ios"
+                ><small>{{order_status_2}}</small></ion-badge>
+              <p><small>#{{order_vba_2}}</small></p>
+            </div>
+          </ion-item>
+        </div>
+
+        <!-- <div class="ion-padding-start ion-margin-top ion-padding-end"> -->
+          <ion-list-header>
+            <ion-label> <h3>Recent Registrations</h3> </ion-label>
+            <ion-button (click)="goToRegistrations()">See All</ion-button>
+          </ion-list-header>
+          <div class="order_active1 ion-padding-top" (click)="check1(dealer0)">
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img src="../../assets/images/register.png" />
+              </ion-avatar>
+              <ion-label>
+                <h2>{{firstname}} {{lastname}}</h2>
+                <h3>{{phone}}</h3>
+                <p><small>DEALER:#{{id}}</small></p>
+              </ion-label>
+              <div id="end">
+                <ion-badge color="primary" slot="end" mode="ios"
+                  ><small>Agrodealer</small></ion-badge
+                >
+                <p><small>{{created | date:'short':'GMT'}}</small></p>
+              </div>
+            </ion-item>
+          </div>
+          <div class="order_active ion-padding-top" (click)="check1(dealer1)">
+            <ion-item lines="none">
+              <ion-avatar slot="start">
+                <img src="../../assets/images/register.png" />
+              </ion-avatar>
+              <ion-label>
+                <h2>{{firstname1}} {{lastname1}}</h2>
+                <h3>{{phone1}}</h3>
+                <p><small>DEALER:#{{id1}}</small></p>
+              </ion-label>
+              <div id="end">
+                <ion-badge  size="small" color="primary" slot="end" mode="ios"
+                  ><small>Agrodealer</small></ion-badge
+                >
+                <p><small>{{created1 | date:'short':'GMT'}}</small></p>
+              </div>
+            </ion-item>
+          </div>
+        <!-- </div> -->
+      </ion-scroll>
+    </div>
+  <!-- </ion-card> -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+    <ion-badge color="primary"  (click)="goToCart()" mode="ios"><ion-icon name="cart-outline">
+
+    </ion-icon>{{cartData.length}}</ion-badge>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

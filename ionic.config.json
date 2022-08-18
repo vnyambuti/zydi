@@ -1,0 +1,7 @@
+{
+  "name": "zydi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

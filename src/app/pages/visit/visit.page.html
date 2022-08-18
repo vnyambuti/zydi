@@ -1,0 +1,117 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+      <ion-title mode="md">Add Visit</ion-title>
+      <!-- <ion-buttons slot="start">
+        <ion-back-button (click)="back()"></ion-back-button>
+      </ion-buttons> -->
+      <ion-button (click)="back()" mode="ios" slot="start" >
+         <ion-icon slot="start" name="arrow-back"></ion-icon>
+
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <ion-searchbar [(ngModel)]="type" [debounce]="250" (ionInput)="filterList($event)"></ion-searchbar>
+  <ion-list no-lines>
+    <ion-item button *ngFor="let location of types">
+      <ion-label>{{location.name}}</ion-label>
+    </ion-item>
+
+  </ion-list> -->
+  <form action=""  [formGroup]="visitform">
+    <div class="ion-padding first">
+     <!-- <ion-item> -->
+      <ion-label>Farm</ion-label>
+
+      <ng-select  bindLabel="farm" formControlName="farm"  notFoundText="No records found"
+      >
+      <ng-option *ngFor="let car of farms" [value]="car.id">{{car.id}}</ng-option>
+    </ng-select>
+    <hr>
+    <div *ngIf="vchain">
+      <ion-label>Value Chain</ion-label>
+
+      <ng-select  bindLabel="valuechain" formControlName="valuechain" (change)="getissues($event)" notFoundText="No records found"
+      (keyup)="getStatesName($event)">
+
+      <ng-option *ngFor="let car of vchains" [value]="car.category">{{car.name}}</ng-option>
+      <!-- <ng-option  value="other">Other</ng-option> -->
+    </ng-select>
+    </div>
+
+
+     <hr>
+     <div *ngIf="!vchain">
+      <ion-label>New Chain</ion-label>
+      <ion-input formControlName="newissue" placeholder="new chain"></ion-input>
+      <hr>
+      <ion-label>Category</ion-label>
+      <ng-select  bindLabel="category"  formControlName="category" (change)="newissue($event)" notFoundText="No records found"
+        (keyup)="getStatesName($event)">
+        <ng-option  value="livestock">Livestock</ng-option>
+        <ng-option  value="fisheries">Fisheries</ng-option>
+        <ng-option  value="crop">Crop</ng-option>
+      </ng-select>
+      <hr>
+      <!-- <hr> -->
+
+     </div>
+      <hr>
+   <ion-label>Type Of Visit</ion-label>
+   <ng-select  bindLabel="visit" formControlName="visit" (change)="getdiseases($event)" notFoundText="No records found"
+     (keyup)="getStatesName($event)">
+     <ng-option  value="disease">Disease</ng-option>
+     <ng-option  value="practice">Practice</ng-option>
+     <ng-option  value="pest">Pest</ng-option>
+   </ng-select>
+     <hr>
+     <div *ngIf="disease">
+      <ion-label>Farm Issue</ion-label>
+      <ng-select  bindLabel="disease" formControlName="disease" (change)="newDisease($event)" notFoundText="No records found"
+      (keyup)="getStatesName($event)">
+
+      <ng-option *ngFor="let car of diseases" [value]="car.id">{{car.name}}</ng-option>
+      <!-- <ng-option  value="other">other</ng-option> -->
+    </ng-select>
+     </div>
+     <div  *ngIf="!disease">
+       <hr>
+      <ion-label>New Disease</ion-label>
+      <ion-input formControlName="disease" placeholder="disease"></ion-input>
+      <hr>
+     </div>
+
+      <ion-textarea formControlName="observation" placeholder="Enter your Observation" rows="4" cols="30">
+
+
+      </ion-textarea>
+
+      <ion-textarea formControlName="recomendation" placeholder="Enter Your recomendation" rows="4" cols="30">
+
+
+      </ion-textarea>
+      <hr>
+      <!-- <ion-input  formControlName="locate" [value]="location" ></ion-input> -->
+      <hr>
+      <div class="ion-text-center ion-margin-top" (click)=albumSheet()>
+        <img class="profile" *ngIf=" newimage" src="{{image}}" height="123px"  width="123px">
+        <!-- <ion-input ></ion-input> -->
+
+
+        <img class="profile" *ngIf="!newimage" src="../../assets/product/OIP.jfif" height="123px" width="123px">
+        <img class="picker" src="../../../assets/Profile/Group 8018.svg">
+    </div>
+      <ion-button (click)="addAVisit()" [disabled]="!visitform.valid || !location||!image " mode="md" expand="full" color="primary">Add This Visit</ion-button>
+  </div>
+
+  </form>
+
+
+</ion-content>
+
+<!-- <ion-footer class="ion-no-border">
+  <ion-toolbar class="ion-no-padding">
+
+  </ion-toolbar>
+</ion-footer> -->

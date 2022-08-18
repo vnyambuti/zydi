@@ -1,0 +1,53 @@
+<ion-content [ngStyle]="{'background-image': 'url(' + image + ')'}">
+  <div class="dark-layer">
+      <div class="content-section">
+          <div class="ion-margin-top">
+              <ion-label class="title">
+                  <p>Login <span class="ion-float-right"></span></p>
+                  <div class="hr"></div>
+              </ion-label>
+          </div>
+          <div class="padding-top">
+            <form class="form" autocomplete="off" [formGroup]="validationsform" (ngSubmit)="tryLogin(validationsform.value)">
+                <div>
+                    <ion-label class="number">Enter Your Number</ion-label>
+                </div>
+                <!-- <div class="number-input">
+                    <div class="code-div">
+                        <ng-select class="country-codeSelect" [clearable]="false" formControlName="code" [items]="cCode" bindLabel="dial_code" bindValue="dial_code">
+                            <ng-template ng-label-tmp let-item="item">
+                                <img height="16" width="21" src="{{'https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/' + (item.code | lowercase) + '.png'}}" style="margin-right: 8px;margin-bottom: -2px" />
+                                <span>{{item.dial_code}}</span>
+                            </ng-template>
+                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                <img height="16" width="21" src="{{'https://raw.githubusercontent.com/hjnilsson/country-flags/master/png250px/' + (item.code | lowercase) + '.png'}}" style="margin-right: 8px;margin-bottom: -2px" />
+                                <span>{{item.dial_code}}</span>
+                            </ng-template>
+                        </ng-select>
+                    </div>
+
+                </div>  -->
+                <div class="input-div">
+                    <div class="input-div">
+                        <ion-input formControlName="phone" type="tel" placeholder="00000000"></ion-input>
+                    </div>
+                </div>
+              <div class="input-div">
+                  <ion-label>Password</ion-label>
+                  <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+                  <!-- <p *ngIf="this.email.length == 0" class="err">{{err?.password[0]}}</p> -->
+              </div>
+              <!-- <p class="forgot ion-float-right" (click)="goForgot()"> Forgot Password!</p> -->
+              <div>
+                  <ion-button [disabled]="!validationsform.valid" type="submit" mode="md" color="primary" expand="full">
+                      Login
+                  </ion-button>
+              </div>
+              <!-- <div class="footer ion-text-center">
+                  <p>Don't have an account ? <span (click)="signup()">Signup</span></p>
+              </div> -->
+            </form>
+          </div>
+      </div>
+  </div>
+</ion-content>

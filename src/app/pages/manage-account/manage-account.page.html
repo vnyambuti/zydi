@@ -1,0 +1,209 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="back()" mode="ios" slot="start" >
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+
+   </ion-button>
+    <ion-title >Manage</ion-title>
+  </ion-toolbar>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <img src="../../../assets/images/avatar.jfif" />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{foo.first_name}}{{foo.last_name}}</h2>
+      <h3>{{foo.county}},{{foo.sub_county}},{{foo.ward}}</h3>
+      <p>{{foo.phone_number}}</p>
+    </ion-label>
+    <div id="end">
+      <ion-badge *ngIf="foo.roles" color="primary" slot="end" mode="ios"
+        >{{foo.roles[0].name}}</ion-badge
+      >
+      <p></p>
+    </div>
+
+  </ion-item>
+  <p id="action">
+    <!-- <ion-button *ngIf="!farms" expand="block" fill="clear" size="small" >
+      <ion-icon  name="paper-plane"></ion-icon>Visit
+    </ion-button>
+    <ion-button *ngIf="farmscount == '0'" expand="block" fill="clear" size="small" >
+      <ion-icon  name="paper-plane"></ion-icon>Visit
+    </ion-button> -->
+    <ion-button  (click)="goToVisit(foo)" expand="block" fill="clear" size="small" >
+      <ion-icon  name="paper-plane"></ion-icon>Visit
+    </ion-button>
+    <ion-button (click)="issue(foo)" expand="block" fill="clear" size="small" shape="round">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>Give
+    </ion-button>
+    <ion-button (click)="shop(foo)" expand="block" fill="clear" size="small" shape="round">
+      <ion-icon  name="cart"></ion-icon>Sell
+    </ion-button>
+    <ion-button (click)="delete()" expand="block" fill="clear" size="small" shape="round">
+      <ion-icon  name="trash"></ion-icon>Remove
+    </ion-button>
+  </p>
+</ion-header>
+<ion-list-header>
+  <ion-label>Recent Transactions</ion-label>
+  <!-- <ion-button>See All</ion-button> -->
+</ion-list-header>
+<ion-segment value="registered" [(ngModel)]="segmentModel" (ionChange)="segmentChanged($event)">
+  <ion-segment-button value="registered">
+    <!-- <ion-label *ngIf="!farms && !shops"><small>Premises <ion-badge color="primary" mode="ios"><small>0</small></ion-badge></small></ion-label> -->
+    <ion-label ><small>Premises <ion-badge color="primary" mode="ios"><small *ngIf="farms">{{farms.length}}</small><small *ngIf="!farms">0</small></ion-badge></small></ion-label>
+    <!-- <ion-label *ngIf="shops" ><small>Shops <ion-badge color="primary" mode="ios"><small></small></ion-badge></small></ion-label> -->
+  </ion-segment-button>
+  <ion-segment-button value="visits">
+    <ion-label><small>Visits <ion-badge color="primary" mode="ios"><small *ngIf="visits > 0">{{visits}}</small><small *ngIf="visits == 0">0</small></ion-badge></small></ion-label>
+  </ion-segment-button>
+   <ion-segment-button value="purchases">
+    <ion-label><small>Purchases</small></ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="smallpack">
+    <ion-label><small>Smallpack <ion-badge color="primary" mode="ios"><small *ngIf="packs">{{packs.length}}</small><small *ngIf="!packs">0</small></ion-badge></small></ion-label>
+  </ion-segment-button>
+
+</ion-segment>
+<ion-content>
+  <!-- <div class="img2" *ngIf="!history">
+    <img src="../../../assets/no-data-icon-10.jpg">
+  </div> -->
+  <div *ngIf="segmentModel === 'registered'">
+    <div class="img2" *ngIf="farmscount == '0'">
+      <img src="../../../assets/no-data-icon-10.jpg">
+    </div>
+    <div *ngIf="farmscount > '0'" class="order_active ion-padding-top">
+
+        <ion-list lines="none" *ngFor="let item of farms">
+
+          <ion-item id="visit">
+            <ion-avatar slot="start">
+              <img src="../../../assets/images/tractor.png" />
+            </ion-avatar>
+            <span class="ion-margin description">
+              <span class="ion-text-center"><small><b>Farm # {{item.id}}</b></small></span>
+              <!-- <span class="ion-text-center text-wrap"><small>{{item.farm_issue_id}}</small></span> -->
+
+
+
+            </span>
+
+            <p  slot="end"><small>{{item.created_at | date:'short':'GMT'}}</small></p>
+          </ion-item>
+
+        </ion-list>
+
+      </div>
+  </div>
+
+  <div *ngIf="segmentModel === 'visits'">
+    <div class="img2" *ngIf="visits == 0">
+      <img src="../../../assets/no-data-icon-10.jpg">
+    </div>
+    <div *ngIf="visits" class="order_active ion-padding-top">
+
+        <ion-list lines="none" *ngFor="let item of visitlist"  (click)="check(item)">
+
+          <ion-item id="visit">
+            <ion-thumbnail slot="start">
+              <img *ngIf="item.image_path" src="https://sibadmin.wigopay.com{{item.image_path}}" />
+              <img *ngIf="!item.image_path" class="bann" src="../../assets/product/OIP.jfif"/>
+            </ion-thumbnail>
+            <!-- <span> <b><small>{{item.created_at | date:'short':'GMT'}}</small></b> </span> -->
+            <span class="ion-margin description">
+              <span class="ion-text-center"><small><b>Farm Issue</b></small></span>
+              <span class="ion-text-center text-wrap"><small>{{item.farm_issue_id}}</small></span>
+             <!-- <span class="ion-text-center"><small><b>Observation</b></small></span>
+              <p class="ion-text-center text-wrap"><small>{{item.reason}}</small></p> -->
+
+
+            </span>
+
+            <p  slot="end"><small>{{item.created_at | date:'short':'GMT'}}</small></p>
+          </ion-item>
+
+        </ion-list>
+
+      </div>
+      <!-- <div class="appoinment-section" *ngFor="let item of visitlist">
+        <div class="header-section">
+          <h6 >CONFIRM</h6>
+          <h6 >PENDING</h6>
+        </div>
+        <div class="body-section">
+          <ion-item mode="md" lines="none">
+            <ion-thumbnail slot="start">
+              <img [src]="item.image" />
+            </ion-thumbnail>
+            <ion-label>
+              <h5>{{item.farm_id}}</h5>
+              <p class="ion-text-wrap">{{item.farm_issue_id}}</p>
+              <p class="ion-text-wrap">{{item.recommendation}}</p>
+              <p>{{item?.start_time | date :'dd MMMM yyyy'}} - {{item?.start_time | date :'hh:mm a'}}</p>
+              <div class="rating-bar">
+                <ion-icon name="star" [ngClass]="{active: item?.branch?.avg_rating >=1 }"></ion-icon>
+                <ion-icon name="star" [ngClass]="{active: item?.branch?.avg_rating >=2 }"></ion-icon>
+                <ion-icon name="star" [ngClass]="{active: item?.branch?.avg_rating >=3 }"></ion-icon>
+                <ion-icon name="star" [ngClass]="{active: item?.branch?.avg_rating >=4 }"></ion-icon>
+                <ion-icon name="star" [ngClass]="{active: item?.branch?.avg_rating >=5 }"></ion-icon>
+              </div>
+            </ion-label>
+          </ion-item>
+        </div>
+        <div class="footer-section">
+          <p class="ion-no-margin">by : {{item.user_id}}</p>
+        </div>
+      </div> -->
+  </div>
+  <div *ngIf="segmentModel === 'purchases'">
+    <div class="img2" *ngIf="!purchases">
+      <img src="../../../assets/no-data-icon-10.jpg">
+    </div>
+    <div *ngIf="purchases" class="order_active ion-padding-top" (click)="check()">
+
+        <ion-list lines="none" *ngFor="let item of purchases">
+
+          <ion-item id="visit">
+            <span> <b>{{item.created_at | date:'short':'GMT'}}</b> </span>
+            <p class="ion-margin">Bought YaraMilla powder 50kg(ref:877-01)</p>
+          </ion-item>
+
+        </ion-list>
+
+      </div>
+  </div>
+  <div *ngIf="segmentModel === 'smallpack'">
+    <div class="img2" *ngIf="!packs">
+      <img src="../../../assets/no-data-icon-10.jpg">
+    </div>
+
+    <div *ngIf="packs" class="order_active ion-padding-top" >
+
+        <ion-list lines="none" *ngFor="let pack of packs">
+
+          <ion-item id="visit">
+            <ion-thumbnail slot="start">
+              <img src="../../../assets/images/pallet.png" />
+            </ion-thumbnail>
+            <!-- <span> <b><small>{{item.created_at | date:'short':'GMT'}}</small></b> </span> -->
+            <span class="ion-margin description">
+              <span><small><b>Pack </b>: #{{pack.code}}</small></span>
+              <span><small><b>Type</b> :{{pack.type}}</small></span>
+             <!-- <span class="ion-text-center"><small><b>Observation</b></small></span> -->
+              <span><small> <b>Veriety</b> :{{pack.variety_id}}</small></span>
+
+
+            </span>
+            <!-- <span slot="end"><small>Issued by:{{pack.vba_id}}</small></span> -->
+
+            <p  slot="end"><small>{{pack.created_at | date:'short':'GMT'}}</small></p>
+          </ion-item>
+
+        </ion-list>
+
+      </div>
+  </div>
+
+
+</ion-content>

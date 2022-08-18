@@ -1,0 +1,199 @@
+ion-header {
+    ion-toolbar {
+        ion-title {
+            --padding-start: 0px;
+            margin-left: -8px;
+            font-size: 17px;
+            font-family: proxi-extrabold;
+        }
+        ion-button {
+            font-size: 13px;
+            color: var(--blue-color) !important;
+            text-transform: capitalize;
+            font-family: proxi-regular;
+            --background: transparent;
+            --color: var(--blue-color);
+        }
+    }
+    #end{
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        align-items: right;
+      }
+      #action{
+          display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+      }
+      #visit{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          box-shadow: 0px 0px 15px 1px #eeeeee;
+          margin-top: 2px;
+      }
+}
+// ion-content {
+//   .section{
+//       height: 100%;
+//   }
+//   .no-data{
+//       text-align: center;
+//       transform: translateY(-50%);
+//       top: 50%;
+//       position: relative;
+//       .calendar-icon{
+//           height: 130px;
+//           width:  130px;
+//       }
+//       h5{
+//           font-family: "Fivo_sans_medium";
+//           color: var(--ion-color-blue);
+//           margin-top: 2rem;
+//           margin-bottom: 5px;
+//       }
+//       p{
+//           font-size: 14px;
+//           font-family: "Fivo_sans_regular";
+//           color: var(--ion-color-dark-blue);
+//           margin: 0px;
+//       }
+//       .btn-general{
+//           font-size: 16px;
+//           text-transform: initial;
+//           font-family: "Fivo_sans_regular";
+//           height: 45px;
+//           margin-top: 2rem;
+//       }
+//   }
+// .appoinment-section {
+//   margin-top: 20px;
+//   margin-bottom: 25px;
+//   .header-section {
+//     background-color: var(--ion-color-yellow);
+//     border-radius: 5px 5px 0px 0px;
+//     padding: 10px 0px;
+//     h6 {
+//       text-align: center;
+//       color: var(--ion-color-white);
+//       font-family: "Fivo_sans_regular";
+//       margin: 0px;
+//     }
+//   }
+//   .body-section {
+//     border-left: 1px solid var(--ion-color-dark-blue);
+//     border-right: 1px solid var(--ion-color-dark-blue);
+//     ion-item {
+//       padding-top: 3px;
+//       ion-thumbnail {
+//         height: 74px;
+//         width: 74px;
+//         img {
+//           border-radius: 5px;
+//         }
+//       }
+//       ion-label {
+//         h5 {
+//           font-size: 18px;
+//           font-family: "Fivo_sans_medium";
+//           color: var(--ion-color-blue);
+//           margin-top: 0px;
+//         }
+//         p {
+//           font-size: 14px;
+//           font-family: "Fivo_sans_regular";
+//           color: var(--ion-color-dark-blue);
+//           margin: 0px;
+//         }
+//         .rating-bar {
+//           ion-icon {
+//             color: var(--ion-color-dark-blue1);
+//             font-size: 15px;
+//             margin-right: 4px;
+//           }
+//           .active {
+//             color: var(--ion-color-yellow);
+//           }
+//         }
+//       }
+//     }
+//   }
+//   .footer-section {
+//     padding: 11px 16px;
+//     border: 1px solid var(--ion-color-dark-blue);
+//     border-radius: 0px 0px 5px 5px;
+//     p {
+//       font-family: "Fivo_sans_regular";
+//       color: var(--ion-color-blue);
+//       .btn-view {
+//         color: var(--ion-color-green);
+//         text-decoration: none;
+//       }
+//     }
+//   }
+// }
+// }
+ion-content{
+
+    .img2 {
+        position: absolute;
+        left: 0;
+        right: 0;
+        text-align: center;
+        img {
+            height: 160px;
+            margin-top: 30%;
+        }
+
+    }
+    #bages {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      top: 26%;
+  }
+    .order_active {
+        height: 100px;
+        box-shadow: 0px 0px 15px 1px #eeeeee;
+        border-radius: 7px;
+        margin: 0 10px;
+        // padding: 0 25px;
+
+        // align-items: center;
+        #end{
+          display: flex;
+          flex-direction: column;
+          justify-content: end;
+          align-items: right;
+        }
+        #action{
+            display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+
+        }
+        #visit{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            box-shadow: 0px 0px 15px 1px #eeeeee;
+            margin-top: 2px;
+            .description{
+              display: flex;
+              flex-direction: column;
+            }
+        }
+      }
+
+}
+
+

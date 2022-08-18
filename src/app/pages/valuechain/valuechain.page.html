@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title mode="md">Enroll Agro Dealer</ion-title>
+    <!-- <ion-buttons slot="start">
+        <ion-back-button (click)="back()"></ion-back-button>
+      </ion-buttons> -->
+    <ion-button (click)="back()" mode="ios" slot="start">
+      <ion-icon slot="start" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+  <form action="" [formGroup]="dealer2form"(ngSubmit)="tryReg(dealer2form.value)">
+  <ion-label>Maize</ion-label>
+      <ion-checkbox color="primary" formControlName="vchain"></ion-checkbox>
+      <label for="">Beans</label>
+      <ion-checkbox color="secondary"  formControlName="vchain"></ion-checkbox>
+      <label for="">Pestcides</label>
+      <ion-checkbox color="danger"  formControlName="vchain"></ion-checkbox>
+      <label for="">Fertilizer</label>
+      <ion-checkbox color="light"  formControlName="vchain"></ion-checkbox>
+      <ion-button
+      [disabled]="!dealer2form.valid"
+      mode="md"
+      expand="full"
+      color="primary"
+      type="submit"
+      >Continue</ion-button
+    >
+    </form>
+
+</ion-content>

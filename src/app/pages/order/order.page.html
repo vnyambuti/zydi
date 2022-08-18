@@ -1,0 +1,63 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button (click)="back()" mode="ios" slot="start" >
+          <ion-icon slot="start" name="arrow-back"></ion-icon>
+
+       </ion-button>
+      </ion-buttons>
+      <ion-title mode="md">Order Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="order ion-padding-start ion-padding-end" *ngIf="foo.status == 'initiated'">Pending</p>
+  <p class="order ion-padding-start ion-padding-end" *ngIf="foo.status == 'ordered'">Completed</p>
+  <p class="orders ion-padding-start ion-padding-end" *ngIf="foo.status == 'cancelled'">Canceled</p>
+  <h1 class="ion-padding-start ion-padding-end">Order ID : {{foo.id}}</h1>
+  <p class="label ion-padding-start ion-padding-end">Details</p>
+
+  <!-- <div class="deails_div">
+      <p>Name: <span class="ion-float-right">{{foo?.user?.name}}</span></p>
+      <img class="img" src="../../../assets/item/Path 3516.png" />
+      <p>
+          Address:
+          <span class="ion-float-right address">{{foo?.address?.addr1}}</span>
+      </p>
+      <img class="img" src="../../../assets/item/Path 3516.png" />
+      <p class="ion-margin-top delivery">
+          Delivery Date: <span class="ion-float-right">{{foo?.date}}</span>
+      </p>
+  </div> -->
+
+  <p class="label ion-margin-top ion-padding-top ion-padding-start ion-padding-end">
+      Total Items
+  </p>
+
+  <div class="deails_div">
+      <p class="item">
+          Your total items are <span class="ion-float-right">{{foo.quantity}}</span>
+      </p>
+  </div>
+
+  <p class="ion-margin-top ion-padding-top label ion-padding-start ion-padding-end">
+      Included Items
+  </p>
+  <div class="deails_div">
+
+      <ion-label class="item" >
+         # {{product.id}}
+          <h4>
+              {{product.name}} X ({{foo?.quantity}}) <span class="ion-float-right">ksh{{product.cost}}</span>
+          </h4>
+      </ion-label>
+
+      <!-- <div class="coupon_div" *ngIf="foo?.discount != 0">
+          <p class="item">Applied Coupon{{foo?.coupon?.discount}}<span *ngIf="foo?.coupon?.type == 'Percentage'">%</span><span *ngIf="foo?.coupon?.type == 'Amount'">{{currency}}</span><span class="red ion-float-right">-{{currency}}{{foo?.discount}}</span></p>
+          <p class="code">{{foo?.coupon?.code}}</p>
+      </div> -->
+      <p class="item-text">
+          Sub Total <span class="ion-float-right">ksh{{total}}</span>
+      </p>
+  </div>
+</ion-content>

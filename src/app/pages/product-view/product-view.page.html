@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button (click)="back()" mode="md" defaultHref="tabs/home" [text]="" icon="arrow-back-outline">
+          </ion-back-button>
+      </ion-buttons>
+      <ion-title mode="md">{{foo.first_name}} {{foo.last_name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-start ion-padding-end">
+  <div class="men ion-margin-top">
+      <ion-row class="ion-text-center">
+          <ion-col *ngFor="let item of products;let i = index" [ngClass]="{
+        'right-padding': i % 2 == 0,
+        'left-padding': i % 2 != 0
+        }" size="6">
+              <div class="div">
+                  <div class="itemm">
+                      <img *ngIf="item.image" src="{{item.imagePath + item.image}}" />
+                      <img src="../../assets/product/OIP.jfif" />
+                  </div>
+                  <h5 color="primary">{{item.name}}</h5>
+                  <!-- <p><small>{{item.type}}</small></p> -->
+                  <!-- <p>KES {{item.cost}}/<small>{{item.type}}</small></p> -->
+                  <p>KES {{item.cost}}</p>
+                  <ion-item class="ion-no-padding" lines="none">
+                      <ion-button mode="ios" fill="clear" (click)="minusFromCart(item)">-</ion-button>
+                      <ion-text>{{item.quantity}}</ion-text>
+                      <ion-button mode="ios" (click)="addToCart(item)" fill="clear">+</ion-button>
+                  </ion-item>
+              </div>
+          </ion-col>
+      </ion-row>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button size="small" *ngIf="cartData.length >= 1" mode="md" expand="full" [routerLink]="['/tabs/cart']" color="var(--blur-color)">
+      Go To Cart
+      <ion-icon src="../../../assets/item/login.svg"></ion-icon>
+  </ion-button>
+</ion-footer>

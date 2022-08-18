@@ -1,0 +1,34 @@
+<ion-tabs>
+  <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="tab1">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button >
+      <ion-icon name="chatbubbles"></ion-icon>
+      <ion-label>Message</ion-label>
+    </ion-tab-button>
+    <ion-tab-button >
+      <ion-button (click)="chooseAdd()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+
+    </ion-tab-button>
+    <ion-tab-button (click)="getOrders()">
+      <ion-badge color="danger" mode="ios">{{ordersCount}}</ion-badge>
+      <ion-icon name="reader-outline"></ion-icon>
+      <ion-label>Orders </ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="getToProfile()">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

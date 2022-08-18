@@ -1,0 +1,62 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button mode="md" defaultHref="/tabs/product-view" text="">
+              <ion-icon src="../../../assets/icon/login.svg"></ion-icon>
+          </ion-back-button>
+      </ion-buttons>
+      <ion-title mode="md">Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="ion-padding-start ion-padding-end header-section">
+      <p class="title">
+          Add Address <span class="ion-float-right" *ngIf="addressDiv.length > 0" (click)="manageAddress()">Select From Saved Address</span>
+      </p>
+      <ion-textarea readonly="true" value="{{address}}" rows="4" cols="30" placeholder="Add your address"></ion-textarea>
+      <p class="future" (click)="addresss()">+ Add address</p>
+  </div> -->
+  <!-- <img src="../../../assets/item/Path 3516.png" class="hr1" />
+  <div class="ion-padding-start ion-padding-end">
+      <p class="title ion-padding-start">Select Expected Delivery Date</p>
+      <p class="date">
+          Expected Delivery Date
+          <span class="ion-float-right" (click)="presentModal()" *ngIf="date == null"> Select Date </span>
+          <span class="ion-float-right" *ngIf="date != null">  {{date}} </span>
+      </p>
+  </div> -->
+  <img src="../../../assets/item/Path 3516.png" class="hr1" />
+
+  <p class="item-heading ion-padding-start ion-padding-end">
+      Your Items
+
+  </p>
+
+  <div class="cart-data">
+      <div *ngFor="let item of cartDataDisplay" class="padding">
+          <ion-item class="ion-no-padding" lines="none">
+              <img class="img" *ngIf="item.image" src="{{item.imagePath + item.image}}" />
+              <img class="img" *ngIf="!item.image" src="../../../assets/product/OIP.jfif" />
+              <ion-label>
+                  <h3>
+                      {{item.name}}<small *ngIf="item.weight"> {{item.weight}} kg</small>
+                  </h3>
+                  <p *ngFor="let i of item?.service">
+                      {{i?.type}} x{{i?.quantity}} <span class="ion-float-right">KES {{i?.total}}</span>
+                  </p>
+              </ion-label>
+          </ion-item>
+          <img src="../../../assets/item/Path 3516.png" class="hr" />
+      </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+      <p>
+          Total Bill :
+          <ion-text> KES {{tot}}</ion-text>
+      </p>
+      <ion-button (click)="makePay()" slot="end" mode="md" color="var(--blue-color)">Make Payment</ion-button>
+  </ion-toolbar>
+</ion-footer>
